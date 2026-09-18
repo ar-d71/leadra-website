@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leadra — Executive advisory in leadership, cybersecurity, and AI governance</title>
+<meta name="description" content="Leadra is an independent advisor to boards and executive teams in Saudi Arabia on cyber, data, and AI governance.">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="alternate" hreflang="ar" href="/ar/">
+<link rel="alternate" hreflang="en" href="/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B080D; --ink-soft:#1F1F21; --bronze:#8A6631; --champagne:#D9BD79;
+  --gold:#C6A046; --gold-deep:#9C7B2E;
+  --paper:#F7F4EB; --paper-raised:#FFFFFF; --paper-sunk:#F1EDE2;
+  --rule:#DAD3C4; --rule-dark:#332C22; --muted:#6E6A63; --error:#8C2F22;
+  --font-display:"Cormorant Garamond","TeX Gyre Pagella",Georgia,serif;
+  --font-text:"Montserrat","Poppins","Helvetica Neue",Arial,sans-serif;
+  --t-display:clamp(2rem,1.1rem + 2.6vw,3.4rem);
+  --t-h1:clamp(2rem,1.4rem + 2.2vw,3.1rem);
+  --t-h2:clamp(1.5rem,1.2rem + 1.1vw,2rem);
+  --t-lead:clamp(1.05rem,1rem + .35vw,1.3rem);
+  --t-body:1.0625rem; --t-small:.9375rem; --t-label:.6875rem;
+  --track-label:.22em; --measure:68ch; --rail:168px;
+  --gutter:clamp(1.25rem,4vw,4rem); --page-max:1180px;
+  --ease:cubic-bezier(.2,0,0,1); --dur:180ms;
+}
+@media (prefers-reduced-motion:reduce){ :root{--dur:0ms} }
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink-soft);
+  font-family:var(--font-text); font-size:var(--t-body); font-weight:300;
+  line-height:1.65; text-rendering:optimizeLegibility;
+}
+.wrap{max-width:var(--page-max); margin-inline:auto; padding-inline:var(--gutter)}
+
+/* ---------- skip link & focus ---------- */
+/* Off-screen skip link. Do NOT use left:-9999px — in RTL it extends the
+   scrollable area and creates horizontal overflow. Clip instead. */
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip:focus{position:fixed;width:auto;height:auto;clip-path:none;inset-inline-start:var(--gutter);
+  top:.5rem;z-index:99;background:var(--ink);color:var(--paper);padding:.6rem 1rem}
+:focus-visible{outline:2px solid var(--bronze); outline-offset:3px}
+.masthead :focus-visible, .hero :focus-visible, .boundary :focus-visible,
+.contact :focus-visible, footer :focus-visible{outline-color:var(--gold)}
+
+/* ---------- masthead ---------- */
+.masthead{background:var(--ink); color:var(--paper); border-bottom:1px solid var(--rule-dark)}
+.masthead .wrap{display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:92px}
+.brand{display:flex; align-items:center; gap:1rem; text-decoration:none; color:inherit}
+.brand .mark{height:40px; width:auto; display:block}
+.brand .name{
+  font-family:var(--font-display); font-size:1.4rem; letter-spacing:.34em;
+  padding-inline-start:.06em; color:var(--paper)
+}
+nav ul{display:flex; gap:1.9rem; list-style:none; margin:0; padding:0}
+nav a{
+  color:#CFC9BF; text-decoration:none; font-size:var(--t-small); font-weight:300;
+  padding-block:.4rem; border-bottom:1px solid transparent; transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease)
+}
+nav a:hover, nav a[aria-current="page"]{color:var(--paper); border-bottom-color:var(--gold)}
+.lang{font-size:var(--t-small); color:var(--gold); text-decoration:none; border-inline-start:1px solid #2A2622; padding-inline-start:1.3rem}
+.menu-btn{display:none}
+
+/* ---------- hero: the questions a board is actually asking ---------- */
+.hero{
+  position:relative; overflow:hidden; background:var(--ink); color:var(--paper);
+  padding-block:clamp(4rem,10vw,7.5rem) clamp(3.5rem,8vw,6rem);
+}
+.hero .mark-watermark{
+  position:absolute; inset-inline-end:clamp(-4rem,-2vw,2rem); top:50%; transform:translateY(-50%);
+  height:clamp(220px,34vw,440px); width:auto; opacity:.06; pointer-events:none; color:var(--gold);
+}
+.hero .eyebrow{
+  display:block; font-size:var(--t-label); letter-spacing:var(--track-label); text-transform:uppercase;
+  color:var(--gold); margin-bottom:clamp(1.6rem,4vw,2.4rem); font-weight:500;
+}
+.hero .questions{margin:0 0 clamp(2rem,5vw,3.2rem); padding:0; list-style:none; max-width:none; position:relative}
+.hero .questions li{ text-wrap:pretty;
+  font-family:var(--font-display); font-size:var(--t-display); line-height:1.06;
+  color:var(--paper); font-weight:400;
+}
+.hero .questions li + li{margin-top:.15em}
+.hero .questions li:nth-child(2){padding-inline-start:1.1em; color:var(--champagne)}
+.hero .questions li:nth-child(3){padding-inline-start:.55em}
+.hero .answer{max-width:52ch; border-top:1px solid var(--rule-dark); padding-top:1.6rem; position:relative}
+.hero .answer p{margin:0; font-size:var(--t-lead); color:#D9D4C8}
+.hero .answer .sig{
+  display:block; margin-top:1.4rem; font-family:var(--font-display); font-style:italic;
+  font-size:1.5rem; color:var(--gold); letter-spacing:.01em;
+}
+
+/* ---------- rail layout: labels sit in the margin, as in a board paper ---------- */
+.section{padding-block:clamp(3rem,7vw,5.5rem); border-bottom:1px solid var(--rule)}
+.section:last-of-type{border-bottom:0}
+.layout{display:grid; grid-template-columns:var(--rail) minmax(0,1fr); gap:clamp(1.5rem,4vw,3.5rem)}
+.rail{position:sticky; top:1.5rem; align-self:start}
+.rail .label{
+  font-size:var(--t-label); letter-spacing:var(--track-label); text-transform:uppercase;
+  color:var(--bronze); font-weight:500; display:block
+}
+.rail .note{display:block; margin-top:.7rem; font-size:var(--t-small); color:var(--muted); line-height:1.5}
+.col{max-width:var(--measure)}
+h2{font-family:var(--font-display); font-size:var(--t-h2); line-height:1.18; font-weight:500; color:var(--ink); margin:0 0 1rem}
+h2::before{content:"";display:block;width:2.5rem;height:2px;background:var(--gold);margin-bottom:1.1rem}
+h3{font-size:1.0625rem; font-weight:500; color:var(--ink); margin:0 0 .35rem}
+p{margin:0 0 1rem}
+p:last-child{margin-bottom:0}
+
+/* ---------- practices: a definition list, not cards ---------- */
+.practices{margin:0; padding:0}
+.practice{padding-block:1.6rem; border-top:1px solid var(--rule)}
+.practice:first-child{border-top:0; padding-top:0}
+.practice .who{font-size:var(--t-small); color:var(--muted); margin-top:.6rem}
+
+/* ---------- scope boundary: the signature panel ---------- */
+.boundary{background:var(--ink); color:var(--paper)}
+.boundary .layout{align-items:start}
+.boundary .rail .label{color:var(--gold)}
+.boundary .rail .note{color:#8E8880}
+.boundary h2{color:var(--paper)}
+.boundary p{color:#E8E4DA}
+.boundary .not{
+  margin:1.6rem 0 0; padding:0; list-style:none;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:.1rem 2rem
+}
+.boundary .not li{
+  padding-block:.55rem; border-top:1px solid #2A2622; color:#B7B0A6; font-size:var(--t-small)
+}
+
+/* ---------- how we work: a real sequence, so numbers earn their place ---------- */
+ol.steps{margin:0; padding:0; list-style:none; counter-reset:step}
+ol.steps li{
+  counter-increment:step; padding:1.1rem 0 1.1rem 3rem; border-top:1px solid var(--rule); position:relative
+}
+ol.steps li:first-child{border-top:0}
+ol.steps li::before{
+  content:counter(step,decimal); position:absolute; inset-inline-start:0; top:1.15rem;
+  font-family:var(--font-display); font-size:1.1rem; color:var(--bronze)
+}
+
+/* ---------- insights ---------- */
+.insight{display:block; padding-block:1.3rem; border-top:1px solid var(--rule); text-decoration:none; color:inherit}
+.insight:hover h3{color:var(--gold-deep)}
+.insight .meta{font-size:var(--t-small); color:var(--muted)}
+
+/* ---------- contact ---------- */
+.contact{background:var(--ink); color:var(--paper)}
+.contact h2{color:var(--paper)}
+.contact p{color:#B7B0A6}
+form{margin-top:1.8rem; max-width:36rem}
+.field{margin-bottom:1.2rem}
+label{display:block; font-size:var(--t-small); color:#CFC9BF; margin-bottom:.4rem}
+input,textarea,select{
+  width:100%; background:#17131A; border:1px solid #2A2622; color:var(--paper);
+  font:inherit; font-size:var(--t-body); padding:.7rem .8rem; border-radius:2px
+}
+input:focus,textarea:focus,select:focus{border-color:var(--gold); outline:2px solid var(--gold); outline-offset:1px}
+.hint{font-size:var(--t-small); color:#8E8880; margin-top:.35rem}
+button{
+  font:inherit; font-size:var(--t-small); letter-spacing:.06em; background:var(--gold);
+  color:var(--ink); border:0; padding:.85rem 1.8rem; border-radius:2px; cursor:pointer;
+  transition:background var(--dur) var(--ease)
+}
+button:hover{background:#D8B65B}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink); color:#8E8880; border-top:1px solid #2A2622; font-size:var(--t-small)}
+footer .wrap{display:flex; flex-wrap:wrap; gap:1rem 2.5rem; justify-content:space-between; padding-block:2.2rem}
+footer a{color:#B7B0A6; text-decoration:none}
+footer a:hover{color:var(--paper)}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .rail{position:static}
+  .rail .label{margin-bottom:.9rem}
+  .rail .note{display:none}
+  nav ul{gap:1.1rem}
+  .hero .questions li:nth-child(2),.hero .questions li:nth-child(3){padding-inline-start:0}
+  .hero .mark-watermark{height:clamp(180px,26vw,260px); opacity:.05}
+}
+@media (max-width:640px){
+  nav{
+    display:none; position:fixed; inset:0; z-index:90; background:var(--ink);
+    padding:calc(76px + 1.5rem) var(--gutter) 2rem; overflow-y:auto;
+  }
+  body.nav-open nav{display:block}
+  nav ul{flex-direction:column; align-items:stretch; gap:0}
+  nav li{border-top:1px solid var(--rule-dark)}
+  nav li:first-child{border-top:0}
+  nav a{display:block; padding:1.1rem 0; font-size:1.15rem; color:var(--paper)}
+  nav a:hover, nav a[aria-current="page"]{border-bottom-color:transparent; color:var(--gold)}
+  .lang{display:block; border-inline-start:0; padding-inline-start:0; padding-block:1.1rem}
+  .menu-btn{
+    display:block; position:relative; z-index:91; background:none; border:1px solid #2A2622; color:var(--paper);
+    padding:.45rem .8rem; font-size:var(--t-small)
+  }
+  body.nav-open .menu-btn{background:var(--gold); border-color:var(--gold); color:var(--ink)}
+  .brand .name{font-size:1rem; letter-spacing:.28em}
+  .hero .mark-watermark{display:none}
+}
+</style>
+</head>
+<body class="on-light">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 742.31 1000" width="22" height="30" fill="#DCC9AB" aria-hidden="true" focusable="false"><path d="M727.26,891.17 L725.08,885.43 L719.62,887.00 L685.17,912.00 L672.51,917.95 L497.39,917.68 L451.25,922.60 L107.91,942.02 L90.46,945.54 L69.26,954.06 L40.22,969.37 L30.09,976.72 L28.18,981.42 L35.94,984.68 L126.97,985.97 L721.08,984.85 L726.93,981.58 L728.66,972.40 L729.46,925.49 Z"/><path d="M714.20,696.49 L710.91,696.58 L705.11,702.02 L687.62,733.42 L663.48,759.65 L651.28,769.31 L627.53,784.00 L598.08,797.18 L562.92,809.08 L482.68,831.45 L439.48,839.32 L322.52,866.45 L271.99,873.17 L247.06,879.14 L213.65,883.65 L205.72,887.35 L210.52,889.63 L229.34,890.78 L301.74,890.26 L439.94,879.14 L533.45,866.45 L583.36,857.22 L632.94,842.68 L657.36,833.12 L675.54,822.86 L696.29,807.62 L708.06,792.80 L712.99,778.29 L714.91,762.17 L716.09,718.74 Z"/><path d="M546.22,257.98 L521.62,255.98 L489.71,256.94 L482.97,259.55 L480.29,267.02 L478.46,294.08 L476.77,399.94 L476.63,618.71 L477.43,665.82 L479.36,672.66 L483.03,675.25 L493.63,671.34 L503.82,663.28 L544.40,626.63 L549.79,620.14 L552.00,613.94 L553.40,549.85 L553.89,278.98 L552.60,262.08 L550.92,259.37 Z"/><path d="M368.37,256.09 L341.31,257.00 L324.52,260.60 L321.55,277.71 L319.28,374.15 L318.52,709.18 L319.34,761.23 L321.22,768.43 L324.29,770.12 L335.60,766.51 L352.95,754.18 L382.23,737.12 L392.16,727.37 L395.16,681.66 L397.14,343.68 L395.09,265.09 L391.62,259.92 Z"/><path d="M230.45,259.66 L175.34,256.74 L161.77,258.42 L157.92,266.26 L152.52,848.06 L147.57,855.25 L114.42,875.05 L112.85,881.06 L117.46,885.23 L165.49,878.15 L281.94,844.49 L464.00,783.75 L522.56,760.62 L582.72,727.03 L617.96,698.95 L646.88,661.28 L659.91,624.34 L664.83,571.00 L658.42,553.14 L653.54,554.98 L638.37,583.02 L605.46,626.05 L569.92,661.09 L527.37,692.92 L451.40,738.25 L358.55,785.88 L248.51,831.17 L239.20,829.83 L235.09,808.18 L234.86,330.03 Z"/><path d="M611.23,153.88 L609.82,142.58 L606.66,137.05 L600.49,134.95 L323.85,133.88 L111.29,136.22 L105.15,140.82 L103.15,150.69 L102.65,172.95 L104.45,187.58 L107.42,195.66 L111.75,198.15 L129.26,199.69 L395.97,200.85 L597.68,198.03 L604.72,196.18 L608.94,189.91 L610.96,175.71 Z"/><path d="M704.37,16.97 L701.17,13.91 L599.08,10.32 L185.99,8.54 L28.14,9.48 L17.14,12.35 L15.09,17.77 L18.88,29.34 L42.77,64.98 L49.03,69.20 L470.99,72.37 L618.42,71.08 L668.86,67.89 L674.29,66.03 L680.63,59.03 L701.53,26.00 Z"/></svg>
+      <span class="name">LEADRA</span>
+    </a>
+    <nav id="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="/practices/">Practices</a></li>
+        <li><a href="/approach/">Approach</a></li>
+        <li><a href="/people/">People</a></li>
+        <li><a href="/insights/">Insights</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a class="lang" href="/ar/" lang="ar" hreflang="ar">العربية</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO — the questions, then the firm's position. No stock imagery. -->
+  <section class="hero">
+    <svg class="mark-watermark" viewBox="0 0 742.31 1000" fill="currentColor" aria-hidden="true" focusable="false"><path d="M727.26,891.17 L725.08,885.43 L719.62,887.00 L685.17,912.00 L672.51,917.95 L497.39,917.68 L451.25,922.60 L107.91,942.02 L90.46,945.54 L69.26,954.06 L40.22,969.37 L30.09,976.72 L28.18,981.42 L35.94,984.68 L126.97,985.97 L721.08,984.85 L726.93,981.58 L728.66,972.40 L729.46,925.49 Z"/><path d="M714.20,696.49 L710.91,696.58 L705.11,702.02 L687.62,733.42 L663.48,759.65 L651.28,769.31 L627.53,784.00 L598.08,797.18 L562.92,809.08 L482.68,831.45 L439.48,839.32 L322.52,866.45 L271.99,873.17 L247.06,879.14 L213.65,883.65 L205.72,887.35 L210.52,889.63 L229.34,890.78 L301.74,890.26 L439.94,879.14 L533.45,866.45 L583.36,857.22 L632.94,842.68 L657.36,833.12 L675.54,822.86 L696.29,807.62 L708.06,792.80 L712.99,778.29 L714.91,762.17 L716.09,718.74 Z"/><path d="M546.22,257.98 L521.62,255.98 L489.71,256.94 L482.97,259.55 L480.29,267.02 L478.46,294.08 L476.77,399.94 L476.63,618.71 L477.43,665.82 L479.36,672.66 L483.03,675.25 L493.63,671.34 L503.82,663.28 L544.40,626.63 L549.79,620.14 L552.00,613.94 L553.40,549.85 L553.89,278.98 L552.60,262.08 L550.92,259.37 Z"/><path d="M368.37,256.09 L341.31,257.00 L324.52,260.60 L321.55,277.71 L319.28,374.15 L318.52,709.18 L319.34,761.23 L321.22,768.43 L324.29,770.12 L335.60,766.51 L352.95,754.18 L382.23,737.12 L392.16,727.37 L395.16,681.66 L397.14,343.68 L395.09,265.09 L391.62,259.92 Z"/><path d="M230.45,259.66 L175.34,256.74 L161.77,258.42 L157.92,266.26 L152.52,848.06 L147.57,855.25 L114.42,875.05 L112.85,881.06 L117.46,885.23 L165.49,878.15 L281.94,844.49 L464.00,783.75 L522.56,760.62 L582.72,727.03 L617.96,698.95 L646.88,661.28 L659.91,624.34 L664.83,571.00 L658.42,553.14 L653.54,554.98 L638.37,583.02 L605.46,626.05 L569.92,661.09 L527.37,692.92 L451.40,738.25 L358.55,785.88 L248.51,831.17 L239.20,829.83 L235.09,808.18 L234.86,330.03 Z"/><path d="M611.23,153.88 L609.82,142.58 L606.66,137.05 L600.49,134.95 L323.85,133.88 L111.29,136.22 L105.15,140.82 L103.15,150.69 L102.65,172.95 L104.45,187.58 L107.42,195.66 L111.75,198.15 L129.26,199.69 L395.97,200.85 L597.68,198.03 L604.72,196.18 L608.94,189.91 L610.96,175.71 Z"/><path d="M704.37,16.97 L701.17,13.91 L599.08,10.32 L185.99,8.54 L28.14,9.48 L17.14,12.35 L15.09,17.77 L18.88,29.34 L42.77,64.98 L49.03,69.20 L470.99,72.37 L618.42,71.08 L668.86,67.89 L674.29,66.03 L680.63,59.03 L701.53,26.00 Z"/></svg>
+    <div class="wrap">
+      <h1 class="vh">Leadra — executive advisory in leadership, cybersecurity, and AI governance</h1>
+      <span class="eyebrow">Executive &amp; board advisory · Riyadh</span>
+      <ul class="questions">
+        <li>Is this a board risk?</li>
+        <li>Should the AI go live?</li>
+        <li>Are we ready to be assessed?</li>
+      </ul>
+      <div class="answer">
+        <p>Three questions with no clean answer, and no time to get them wrong. Leadra advises
+        boards and executive teams in Saudi Arabia on cyber, data, and AI governance — independently,
+        with no products to sell and no implementation revenue.</p>
+        <span class="sig">Lead further.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITIONING -->
+  <section class="section">
+    <div class="wrap layout">
+      <div class="rail">
+        <span class="label">Who we are</span>
+        <span class="note">A three-partner firm. Riyadh, working across the Kingdom and the GCC.</span>
+      </div>
+      <div class="col">
+        <h2>Regulator experience and board experience, in the same room</h2>
+        <p>Our partners have sat inside the National Cybersecurity Authority, inside regulated
+        government entities as heads of GRC and Data &amp; AI, and in the chair of an audit and risk
+        committee. They have made these calls themselves, under time pressure and with incomplete
+        information.</p>
+        <p>That is what a client is paying for: an experienced view applied to a specific decision,
+        rather than a report of findings that still has to be interpreted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICES — a list of what we do, with the partner who owns it -->
+  <section class="section">
+    <div class="wrap layout">
+      <div class="rail">
+        <span class="label">Practices</span>
+        <span class="note">Three areas, one executive lens. Every engagement is owned by a partner.</span>
+      </div>
+      <div class="col practices">
+        <div class="practice">
+          <h3>Executive leadership and governance</h3>
+          <p>Board and audit committee advisory, governance operating models, and the design of the
+          roles that now carry technology risk — CISO, CDO, head of GRC.</p>
+          <p class="who">Led by the partner who chairs an audit and risk committee.</p>
+        </div>
+        <div class="practice">
+          <h3>Cybersecurity governance and regulatory strategy</h3>
+          <p>Board-level oversight of cyber risk, governance readiness for NCA and sector
+          expectations, regulatory engagement, and executive decision-making during an incident.</p>
+          <p class="who">Led by our former National Cybersecurity Authority partner.</p>
+        </div>
+        <div class="practice">
+          <h3>AI strategy and governance</h3>
+          <p>Which AI use cases should proceed and on what terms, governance frameworks aligned to
+          SDAIA principles and the PDPL, AI risk committees, and board literacy.</p>
+          <p class="who">Led by our Data &amp; AI partner, with academic support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOPE BOUNDARY — the signature moment. Unusual, and the reason to trust the advice. -->
+  <section class="section boundary">
+    <div class="wrap layout">
+      <div class="rail">
+        <span class="label">What we don't do</span>
+        <span class="note">Independence is easier to claim than to structure.</span>
+      </div>
+      <div class="col">
+        <h2>We govern the work. We don't sell you the work.</h2>
+        <p>Leadra is a governance and advisory firm. We hold no reseller agreements, take no
+        referral fees from technology vendors, and earn nothing from implementation. When a client
+        needs technical execution, we define the requirement and govern the outcome — a separate
+        provider does the work.</p>
+        <ul class="not">
+          <li>Penetration testing</li>
+          <li>Technical audits</li>
+          <li>Architecture and solution design</li>
+          <li>Tool selection and procurement</li>
+          <li>Implementation</li>
+          <li>Managed services</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK — genuinely a sequence, so the numbering is informative -->
+  <section class="section">
+    <div class="wrap layout">
+      <div class="rail">
+        <span class="label">How an engagement runs</span>
+        <span class="note">From first conversation to board readout.</span>
+      </div>
+      <div class="col">
+        <h2>Four steps, and a partner present at each of them</h2>
+        <ol class="steps">
+          <li><h3>Diagnostic conversation</h3><p>Half a day with the people accountable for the
+            decision. We tell you plainly whether we are the right firm for it.</p></li>
+          <li><h3>Proposal within five working days</h3><p>Scope, the outcomes we will be measured
+            on, who delivers, the fee, and the terms.</p></li>
+          <li><h3>Delivery under partner ownership</h3><p>Work is carried out by partners, associate
+            consultants, or vetted specialists. You are told who is on your engagement and in what
+            capacity. A second partner reviews anything that reaches a board.</p></li>
+          <li><h3>Readout and measurement</h3><p>We agree before-and-after indicators at kickoff and
+            report against them. No return-on-investment claims we cannot evidence.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section class="section">
+    <div class="wrap layout">
+      <div class="rail">
+        <span class="label">Insights</span>
+        <span class="note">A quarterly briefing paper, in Arabic and English.</span>
+      </div>
+      <div class="col">
+        <h2>Written for the people who have to sign</h2>
+        <a class="insight" href="/insights/audit-committees-ai/">
+          <h3>What an audit committee should ask about AI</h3>
+          <p class="meta">Briefing paper · 8 minutes</p>
+        </a>
+        <a class="insight" href="/insights/assessment-readiness/">
+          <h3>Documented for an assessment is not the same as ready for one</h3>
+          <p class="meta">Briefing paper · 6 minutes</p>
+        </a>
+        <a class="insight" href="/insights/incident-governance/">
+          <h3>Who decides during an incident, and who only needs to be told</h3>
+          <p class="meta">Briefing paper · 7 minutes</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="wrap layout">
+      <div class="rail">
+        <span class="label">Start a conversation</span>
+        <span class="note">We reply within two working days.</span>
+      </div>
+      <div class="col">
+        <h2>Tell us the decision you're facing</h2>
+        <p>Not a form to fill in for a brochure. Describe the question in a line or two and a partner
+        will read it.</p>
+        <form action="/inquiries" method="post" novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="org">Organisation and role</label>
+            <input id="org" name="org" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required
+                   aria-describedby="email-hint">
+            <p class="hint" id="email-hint">We use this to reply. Nothing else.</p>
+          </div>
+          <div class="field">
+            <label for="q">What are you weighing up?</label>
+            <textarea id="q" name="q" rows="4" required></textarea>
+          </div>
+          <button type="submit">Send to a partner</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>Leadra · Riyadh, Kingdom of Saudi Arabia</div>
+    <div><a href="mailto:hello@leadra.co">hello@leadra.co</a></div>
+    <div><a href="/privacy/">Privacy</a> · <a href="/ar/" lang="ar">العربية</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.menu-btn');
+  var nav = document.getElementById('primary-nav');
+  if(!btn || !nav) return;
+  function closeNav(){
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded','false');
+  }
+  function openNav(){
+    document.body.classList.add('nav-open');
+    btn.setAttribute('aria-expanded','true');
+  }
+  btn.addEventListener('click', function(){
+    var open = document.body.classList.contains('nav-open');
+    if(open){ closeNav(); btn.focus(); } else { openNav(); }
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A') closeNav();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && document.body.classList.contains('nav-open')){
+      closeNav(); btn.focus();
+    }
+  });
+  var mq = window.matchMedia('(min-width:641px)');
+  mq.addEventListener('change', function(e){ if(e.matches) closeNav(); });
+})();
+</script>
+</body>
+</html>
