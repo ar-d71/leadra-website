@@ -217,6 +217,14 @@ body{font-family:"IBM Plex Sans Arabic","Noto Naskh Arabic",sans-serif; font-siz
 .rail .label, footer, nav a, .lang, .eyebrow{letter-spacing:0}
 .brand .name{letter-spacing:.14em}
 ol.steps li::before{font-family:"IBM Plex Sans Arabic",sans-serif; font-size:.95rem}
+
+/* ---------- motion: calm reveal on scroll, quiet hero entrance ---------- */
+.reveal{opacity:0; transform:translateY(22px); transition:opacity 900ms var(--ease), transform 900ms var(--ease)}
+.reveal.is-visible{opacity:1; transform:translateY(0)}
+.hero .mark-watermark{transition:transform 100ms linear}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1; transform:none; transition:none}
+}
 </style>
 </head>
 <body class="on-light">
@@ -457,6 +465,66 @@ ol.steps li::before{font-family:"IBM Plex Sans Arabic",sans-serif; font-size:.95
   });
   var mq = window.matchMedia('(min-width:641px)');
   mq.addEventListener('change', function(e){ if(e.matches) closeNav(); });
+})();
+
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var heroEls = document.querySelectorAll('.hero .eyebrow, .hero .questions li, .hero .answer');
+  heroEls.forEach(function(el, i){
+    el.classList.add('reveal');
+    el.style.transitionDelay = reduced ? '0ms' : (i * 110) + 'ms';
+  });
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      heroEls.forEach(function(el){ el.classList.add('is-visible'); });
+    });
+  });
+
+  if(reduced) return;
+
+  /* Checked manually on scroll rather than via IntersectionObserver — see
+     index.html for why (a fast scroll can skip the observer entirely). */
+  var pending = Array.prototype.slice.call(document.querySelectorAll(
+    '.rail, .col > h2, .col > p, .practice, .boundary .not li, ol.steps li, .insight'
+  ));
+  pending.forEach(function(el, i){
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  });
+  function revealInView(){
+    var vh = window.innerHeight;
+    pending = pending.filter(function(el){
+      if(el.getBoundingClientRect().top < vh - 40){
+        el.classList.add('is-visible');
+        return false;
+      }
+      return true;
+    });
+    if(pending.length === 0) window.removeEventListener('scroll', onRevealScroll);
+  }
+  var revealTicking = false;
+  function onRevealScroll(){
+    if(revealTicking) return;
+    revealTicking = true;
+    requestAnimationFrame(function(){ revealInView(); revealTicking = false; });
+  }
+  window.addEventListener('scroll', onRevealScroll, {passive:true});
+  revealInView();
+
+  var wm = document.querySelector('.hero .mark-watermark');
+  if(wm){
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var y = Math.min(window.scrollY * 0.12, 60);
+        wm.style.transform = 'translateY(calc(-50% + ' + y + 'px))';
+        ticking = false;
+      });
+    }, {passive:true});
+  }
 })();
 </script>
 </body>

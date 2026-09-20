@@ -206,6 +206,14 @@ footer a:hover{color:var(--paper)}
   .brand .name{font-size:1rem; letter-spacing:.28em}
   .hero .mark-watermark{display:none}
 }
+
+/* ---------- motion: calm reveal on scroll, quiet hero entrance ---------- */
+.reveal{opacity:0; transform:translateY(22px); transition:opacity 900ms var(--ease), transform 900ms var(--ease)}
+.reveal.is-visible{opacity:1; transform:translateY(0)}
+.hero .mark-watermark{transition:transform 100ms linear}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1; transform:none; transition:none}
+}
 </style>
 </head>
 <body class="on-light">
@@ -448,6 +456,74 @@ footer a:hover{color:var(--paper)}
   });
   var mq = window.matchMedia('(min-width:641px)');
   mq.addEventListener('change', function(e){ if(e.matches) closeNav(); });
+})();
+
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Hero entrance: a quiet, staggered fade-up on load — not scroll-triggered. */
+  var heroEls = document.querySelectorAll('.hero .eyebrow, .hero .questions li, .hero .answer');
+  heroEls.forEach(function(el, i){
+    el.classList.add('reveal');
+    el.style.transitionDelay = reduced ? '0ms' : (i * 110) + 'ms';
+  });
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      heroEls.forEach(function(el){ el.classList.add('is-visible'); });
+    });
+  });
+
+  if(reduced) return;
+
+  /* Scroll reveal: sections settle in as they're read, not all at once.
+     Checked manually on scroll rather than via IntersectionObserver — a fast
+     scroll (trackpad flick, Page Down, "scroll to bottom") can move an
+     element from below the viewport to above it between two observer
+     samples, with isIntersecting false both times, so the browser never
+     fires a callback for it at all and it would stay opacity:0 forever.
+     Walking the list ourselves on every scroll tick has no such gap. */
+  var pending = Array.prototype.slice.call(document.querySelectorAll(
+    '.rail, .col > h2, .col > p, .practice, .boundary .not li, ol.steps li, .insight'
+  ));
+  pending.forEach(function(el, i){
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  });
+  function revealInView(){
+    var vh = window.innerHeight;
+    pending = pending.filter(function(el){
+      if(el.getBoundingClientRect().top < vh - 40){
+        el.classList.add('is-visible');
+        return false;
+      }
+      return true;
+    });
+    if(pending.length === 0) window.removeEventListener('scroll', onRevealScroll);
+  }
+  var revealTicking = false;
+  function onRevealScroll(){
+    if(revealTicking) return;
+    revealTicking = true;
+    requestAnimationFrame(function(){ revealInView(); revealTicking = false; });
+  }
+  window.addEventListener('scroll', onRevealScroll, {passive:true});
+  revealInView();
+
+  /* Watermark: the pillar mark drifts a little slower than the page, like it's
+     standing still while you scroll past it — not a moving background. */
+  var wm = document.querySelector('.hero .mark-watermark');
+  if(wm){
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var y = Math.min(window.scrollY * 0.12, 60);
+        wm.style.transform = 'translateY(calc(-50% + ' + y + 'px))';
+        ticking = false;
+      });
+    }, {passive:true});
+  }
 })();
 </script>
 </body>
