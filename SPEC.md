@@ -1,3 +1,5 @@
+> September 20, 2026 update: the user explicitly approved a photographic black/gold redesign with motion after confirming the advisory business. The visual layout restrictions below are historical; see DESIGN-NOTES.md and the current tokens/styleguide. Business scope and independence remain.
+
 # Leadra — website specification
 
 Handoff for the developer. Everything here is decided; where something is genuinely open it is

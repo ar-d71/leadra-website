@@ -1,41 +1,33 @@
-# Leadra — website package
+# Leadra — independent executive advisory
 
-Everything needed to build the site. Read `SPEC.md` first; it carries the decisions.
+Bilingual static website, redesigned September 20, 2026. No build step or framework.
+
+## Preview
+
+Run `python3 -m http.server 8765 --bind 127.0.0.1` in this directory, then open `http://127.0.0.1:8765/index-ar.html` (Arabic) or `index.html` (English).
 
 ## Files
 
-| File | What it is |
-|---|---|
-| `SPEC.md` | Build specification: sitemap, page requirements, accessibility, RTL, security, launch checklist |
-| `tokens.css` | Canonical design tokens as CSS custom properties |
-| `tokens.json` | The same values for JS or a Tailwind config |
-| `index.html` | Reference build of the homepage — real copy, real layout, self-contained |
-| `styleguide.html` | Component library with usage rules and measured contrast ratios |
-| `index-ar.html` | RTL reference, showing the mirrored layout |
-| `assets/` | Logo in obsidian, champagne, and ivory; the compact cut; favicon |
+- `index-ar.html` / `index.html`: complete homepages with real project service descriptions.
+- `site.css` / `site.js`: shared responsive styles and progressive interactions.
+- `tokens.css` / `tokens.json`: current design tokens.
+- `styleguide.html`: current visual reference.
+- `assets/editorial/`: three generated text-free WebP compositions.
+- `assets/fonts/`: locally served Arabic and Latin WOFF2 subsets.
+- `DESIGN-NOTES.md`: business interpretation, decisions, image prompts and validation.
 
-## How to use it
+## Publishing
 
-The two reference pages inline their CSS so they open straight from disk with no server. They are
-not a starter template to extend — extract the CSS into a shared stylesheet built from `tokens.css`,
-then rebuild the pages in whatever stack you are using.
+Compatible with the existing GitHub Pages project path. Links are relative. Publish only this website directory; the outer project's legal documents must remain private. Production publishing uses the main branch of ar-d71/leadra-website.
 
-The copy in `index.html` is written, approved in substance, and should be carried across rather than
-replaced with lorem ipsum. Where the client still has to decide something, `SPEC.md` marks it
-**[client to confirm]**.
+## Contact behaviour
 
-## Three things that are easy to get wrong
+The form prepares a `mailto:` draft for the visitor to send in their own email app. It validates required fields and email syntax, and offers a copyable draft if the email app does not open. It does not submit data to a server or claim that a message has been sent. A backend is needed if direct form submission is desired later.
 
-1. **The two accents never swap.** Bronze on light, champagne on dark. Champagne on ivory measures
-   1.47:1 and cannot carry text.
-2. **Cormorant Garamond is a display face.** Never below 20px. Montserrat carries everything a
-   person actually reads.
-3. **No third-party scripts.** The client is a cybersecurity advisory firm; a tag manager or chat
-   widget on this site is a credibility problem, not a convenience. See the security section of the
-   spec.
+## Motion and accessibility
 
-## Fonts
+Native scroll; a bounded hero parallax; sequential entrance; section reveals; a scroll-linked sticky practice compass; a scroll-linked journey line. Includes an explicit pause control and respects system reduced-motion. Always-visible practice articles, labelled fields, keyboard focus and a skip link. Core content remains available without JavaScript.
 
-Cormorant Garamond and Montserrat, both free from Google Fonts. The reference pages link them from
-Google for convenience; self-hosting as subset WOFF2 is preferred for the real build, and removes a
-third-party request.
+## Project scope
+
+The user confirmed the existing board/advisory business positioning and explicitly requested the black/gold photographic redesign. This supersedes the old visual restrictions in `SPEC.md`; the business scope and independence remain. Missing articles and unknown partner biographies are not fabricated.
