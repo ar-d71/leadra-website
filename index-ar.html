@@ -73,10 +73,16 @@ nav a:hover, nav a[aria-current="page"]{color:var(--paper); border-bottom-color:
   position:relative; overflow:hidden; background:var(--ink); color:var(--paper);
   padding-block:clamp(4rem,10vw,7.5rem) clamp(3.5rem,8vw,6rem);
 }
-.hero .mark-watermark{
-  position:absolute; inset-inline-end:clamp(-4rem,-2vw,2rem); top:50%; transform:translateY(-50%);
-  height:clamp(220px,34vw,440px); width:auto; opacity:.06; pointer-events:none; color:var(--gold);
+.hero-bg{
+  position:absolute; inset:-8% -5%; z-index:0;
+  background:url('assets/hero/hero-summit-walk.jpg') center 22%/cover no-repeat;
+  will-change:transform;
 }
+.hero-bg::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(11,8,13,.55) 0%, rgba(11,8,13,.75) 45%, rgba(11,8,13,.95) 100%);
+}
+.hero .wrap{position:relative; z-index:1}
 .hero .eyebrow{
   display:block; font-size:var(--t-label); letter-spacing:var(--track-label); text-transform:uppercase;
   color:var(--gold); margin-bottom:clamp(1.6rem,4vw,2.4rem); font-weight:500;
@@ -120,7 +126,12 @@ p:last-child{margin-bottom:0}
 .practice .who{font-size:var(--t-small); color:var(--muted); margin-top:.6rem}
 
 /* ---------- scope boundary: the signature panel ---------- */
-.boundary{background:var(--ink); color:var(--paper)}
+.boundary{
+  position:relative; color:var(--paper);
+  background:
+    linear-gradient(180deg, rgba(11,8,13,.90), rgba(11,8,13,.96)),
+    url('assets/hero/boundary-seal-texture.jpg') center/cover no-repeat, var(--ink);
+}
 .boundary .layout{align-items:start}
 .boundary .rail .label{color:var(--gold)}
 .boundary .rail .note{color:#8E8880}
@@ -184,7 +195,6 @@ footer a:hover{color:var(--paper)}
   .rail .note{display:none}
   nav ul{gap:1.1rem}
   .hero .questions li:nth-child(2),.hero .questions li:nth-child(3){padding-inline-start:0}
-  .hero .mark-watermark{height:clamp(180px,26vw,260px); opacity:.05}
 }
 @media (max-width:640px){
   nav{
@@ -204,7 +214,7 @@ footer a:hover{color:var(--paper)}
   }
   body.nav-open .menu-btn{background:var(--gold); border-color:var(--gold); color:var(--ink)}
   .brand .name{font-size:1rem; letter-spacing:.28em}
-  .hero .mark-watermark{display:none}
+  .hero-bg::after{background:linear-gradient(180deg, rgba(11,8,13,.68) 0%, rgba(11,8,13,.85) 45%, rgba(11,8,13,.97) 100%)}
 }
 
 /* ---------- Arabic overrides ----------
@@ -221,7 +231,7 @@ ol.steps li::before{font-family:"IBM Plex Sans Arabic",sans-serif; font-size:.95
 /* ---------- motion: calm reveal on scroll, quiet hero entrance ---------- */
 .reveal{opacity:0; transform:translateY(22px); transition:opacity 900ms var(--ease), transform 900ms var(--ease)}
 .reveal.is-visible{opacity:1; transform:translateY(0)}
-.hero .mark-watermark{transition:transform 100ms linear}
+.hero-bg{transition:transform 100ms linear}
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1; transform:none; transition:none}
 }
@@ -252,9 +262,10 @@ ol.steps li::before{font-family:"IBM Plex Sans Arabic",sans-serif; font-size:.95
 
 <main id="main">
 
-  <!-- HERO — the questions, then the firm's position. No stock imagery. -->
+  <!-- HERO — the questions, then the firm's position. Client-supplied brand
+       photography as background, per their explicit request 2026-09-20. -->
   <section class="hero">
-    <svg class="mark-watermark" viewBox="0 0 742.31 1000" fill="currentColor" aria-hidden="true" focusable="false"><path d="M727.26,891.17 L725.08,885.43 L719.62,887.00 L685.17,912.00 L672.51,917.95 L497.39,917.68 L451.25,922.60 L107.91,942.02 L90.46,945.54 L69.26,954.06 L40.22,969.37 L30.09,976.72 L28.18,981.42 L35.94,984.68 L126.97,985.97 L721.08,984.85 L726.93,981.58 L728.66,972.40 L729.46,925.49 Z"/><path d="M714.20,696.49 L710.91,696.58 L705.11,702.02 L687.62,733.42 L663.48,759.65 L651.28,769.31 L627.53,784.00 L598.08,797.18 L562.92,809.08 L482.68,831.45 L439.48,839.32 L322.52,866.45 L271.99,873.17 L247.06,879.14 L213.65,883.65 L205.72,887.35 L210.52,889.63 L229.34,890.78 L301.74,890.26 L439.94,879.14 L533.45,866.45 L583.36,857.22 L632.94,842.68 L657.36,833.12 L675.54,822.86 L696.29,807.62 L708.06,792.80 L712.99,778.29 L714.91,762.17 L716.09,718.74 Z"/><path d="M546.22,257.98 L521.62,255.98 L489.71,256.94 L482.97,259.55 L480.29,267.02 L478.46,294.08 L476.77,399.94 L476.63,618.71 L477.43,665.82 L479.36,672.66 L483.03,675.25 L493.63,671.34 L503.82,663.28 L544.40,626.63 L549.79,620.14 L552.00,613.94 L553.40,549.85 L553.89,278.98 L552.60,262.08 L550.92,259.37 Z"/><path d="M368.37,256.09 L341.31,257.00 L324.52,260.60 L321.55,277.71 L319.28,374.15 L318.52,709.18 L319.34,761.23 L321.22,768.43 L324.29,770.12 L335.60,766.51 L352.95,754.18 L382.23,737.12 L392.16,727.37 L395.16,681.66 L397.14,343.68 L395.09,265.09 L391.62,259.92 Z"/><path d="M230.45,259.66 L175.34,256.74 L161.77,258.42 L157.92,266.26 L152.52,848.06 L147.57,855.25 L114.42,875.05 L112.85,881.06 L117.46,885.23 L165.49,878.15 L281.94,844.49 L464.00,783.75 L522.56,760.62 L582.72,727.03 L617.96,698.95 L646.88,661.28 L659.91,624.34 L664.83,571.00 L658.42,553.14 L653.54,554.98 L638.37,583.02 L605.46,626.05 L569.92,661.09 L527.37,692.92 L451.40,738.25 L358.55,785.88 L248.51,831.17 L239.20,829.83 L235.09,808.18 L234.86,330.03 Z"/><path d="M611.23,153.88 L609.82,142.58 L606.66,137.05 L600.49,134.95 L323.85,133.88 L111.29,136.22 L105.15,140.82 L103.15,150.69 L102.65,172.95 L104.45,187.58 L107.42,195.66 L111.75,198.15 L129.26,199.69 L395.97,200.85 L597.68,198.03 L604.72,196.18 L608.94,189.91 L610.96,175.71 Z"/><path d="M704.37,16.97 L701.17,13.91 L599.08,10.32 L185.99,8.54 L28.14,9.48 L17.14,12.35 L15.09,17.77 L18.88,29.34 L42.77,64.98 L49.03,69.20 L470.99,72.37 L618.42,71.08 L668.86,67.89 L674.29,66.03 L680.63,59.03 L701.53,26.00 Z"/></svg>
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap">
       <h1 class="vh">ليدرا — استشارات تنفيذية في القيادة والأمن السيبراني وحوكمة الذكاء الاصطناعي</h1>
       <span class="eyebrow">استشارات تنفيذية لمجالس الإدارة · الرياض</span>
@@ -512,7 +523,7 @@ ol.steps li::before{font-family:"IBM Plex Sans Arabic",sans-serif; font-size:.95
   window.addEventListener('scroll', onRevealScroll, {passive:true});
   revealInView();
 
-  var wm = document.querySelector('.hero .mark-watermark');
+  var wm = document.querySelector('.hero-bg');
   if(wm){
     var ticking = false;
     window.addEventListener('scroll', function(){
@@ -520,7 +531,7 @@ ol.steps li::before{font-family:"IBM Plex Sans Arabic",sans-serif; font-size:.95
       ticking = true;
       requestAnimationFrame(function(){
         var y = Math.min(window.scrollY * 0.12, 60);
-        wm.style.transform = 'translateY(calc(-50% + ' + y + 'px))';
+        wm.style.transform = 'translateY(' + y + 'px)';
         ticking = false;
       });
     }, {passive:true});
