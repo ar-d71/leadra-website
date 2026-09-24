@@ -169,3 +169,15 @@ html[lang=ar] .person-card--profile .person-card-bio{font-size:18px!important;li
 .people .advisory-member-role,.people .advisory-member-note{color:#b8bdaf}
 @media(max-width:900px){.person-card--profile{gap:35px;grid-template-columns:42% minmax(0,1fr)}.person-card--profile .person-card-bio{font-size:15px!important}html[lang=ar] .person-card--profile .person-card-bio{font-size:16px!important}.people-heading{gap:0 25px}}
 @media(max-width:600px){.people.section-light{padding-block:65px}.people-heading{display:block;margin-bottom:35px}.people-heading h2{margin:17px 0}.people-heading .lead{font-size:15px;max-width:none}.person-card--profile{grid-template-columns:minmax(0,1fr);gap:0;padding-bottom:35px}.profile-portrait{width:100%;aspect-ratio:4/4.7;max-height:540px}.profile-portrait img{object-position:center 30%}.person-card--profile .person-card-copy{padding:12px 3px 0}.person-card--profile .person-card-copy::before{margin-bottom:23px;width:36px}.person-card--profile .person-card-name{font-size:38px;margin-bottom:14px}html[lang=ar] .person-card--profile .person-card-name{font-size:32px}.person-card--profile .person-card-role{font-size:11px!important}html[lang=ar] .person-card--profile .person-card-role{font-size:15px!important}.person-card--profile .person-card-bio{margin-top:22px!important;padding-top:20px}.founder-cards{margin-bottom:35px}.people .advisory-copy h3{font-size:23px}}
+
+/* Natural portrait color and compact advisory board cards. */
+.profile-portrait img,.person-card--profile:hover .profile-portrait img{filter:none}
+.advisory-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:32px;max-width:920px}
+.advisory-cards .person-card--profile{grid-column:auto;display:block;border:1px solid #c6ab7433;padding:0;overflow:hidden;background:#161d17}
+.advisory-cards .profile-portrait{aspect-ratio:4/4.7;max-height:320px}
+.advisory-cards .person-card-copy{padding:20px 18px 24px}
+.advisory-cards .person-card-copy::before{display:none}
+.advisory-cards .person-card-name,html[lang=ar] .advisory-cards .person-card-name{font-size:25px;line-height:1.45;margin:0}
+.advisor-placeholder{border:1px dashed #c6ab7440;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:25px;background:#151c16;color:#ada58f;font-size:12px}
+.advisor-placeholder img{width:40px;height:54px;opacity:.7}
+@media(max-width:600px){.advisory-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.advisory-cards .person-card-name,html[lang=ar] .advisory-cards .person-card-name{font-size:20px}.advisory-cards .person-card-copy{padding:14px 12px 18px}.advisor-placeholder{min-height:210px}}
