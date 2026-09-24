@@ -67,3 +67,21 @@ html[lang=ar] .practice-content{font-size:16px}
 .practice-icon{flex:0 0 28px;width:28px;height:28px;max-width:28px;max-height:28px}
 .practice-icon svg{width:100%;height:100%;max-width:100%;max-height:100%}
 @media(max-width:760px){.practice-icon{flex-basis:24px;width:24px;height:24px;max-width:24px;max-height:24px}}
+
+/* Final copy v2: four practices and the supplied people/promise sections. */
+.compass-art[data-active="3"] .glyph-3{opacity:1;transform:scale(1) rotate(0)}
+.compass-art[data-active="3"] .label-3{opacity:1;transform:none}
+.people{padding-block:95px;border-top:1px solid #cec8bc}
+.people-grid,.promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.people h2,.promise h2{margin-block:24px}
+.people .lead,.advisory-copy p,.promise-body{color:#696d63}
+.people .lead{font-size:18px;max-width:450px}
+.advisory-copy h3,.search-note h3{font-size:18px;margin-bottom:18px}
+.advisory-copy p,.promise-body{font-size:16px;line-height:1.95}
+.search-note{margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
+.search-note p{color:var(--muted);font-size:14px;line-height:1.95}
+html[lang=ar] .search-note p{font-size:16px}
+.expertise .section-intro{max-width:440px}
+html[lang=ar] .eyebrow,html[lang=ar] .practice-question,html[lang=ar] label{letter-spacing:0}
+@media(max-width:1050px){.people-grid,.promise-grid{gap:50px}}
+@media(max-width:760px){.people{padding-block:75px}.people-grid,.promise-grid{grid-template-columns:1fr;gap:30px}.advisory-copy p,.promise-body{font-size:15px}.hero{min-height:900px}.hero-inner{padding-top:145px;padding-bottom:115px}.hero-copy h1{margin-block:22px}.hero-intro{max-width:440px!important}}

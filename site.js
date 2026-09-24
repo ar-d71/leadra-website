@@ -9,9 +9,7 @@
   const progress=document.querySelector('.reading-progress');
   const hero=document.querySelector('.hero');
   const heroImage=document.querySelector('.hero-image');
-  const journey=document.querySelector('.journey-fill');
-  const approach=document.querySelector('.approach');
-  let pending=[...document.querySelectorAll('.reveal')];
+    let pending=[...document.querySelectorAll('.reveal')];
   function closeMenu(){nav.classList.remove('is-open');menu.setAttribute('aria-expanded','false');}
   menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('is-open',open);});
   nav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
@@ -47,8 +45,6 @@
     pending=pending.filter(el=>{if(paused||el.getBoundingClientRect().top<vh-25){el.classList.add('is-visible');return false;}return true;});
     if(!paused&&innerWidth>760&&y<hero.offsetHeight){heroImage.style.transform=`translateY(${Math.min(y*.18,130)}px) scale(1.035)`;}
     if(paused||innerWidth<=760)heroImage.style.transform='none';
-    const r=approach.getBoundingClientRect();
-    journey.style.strokeDashoffset=String(1-clamp((vh-r.top)/(r.height+vh*.25),0,1));
   }
   function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(frame);}}
   addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule);
@@ -67,7 +63,7 @@
     draftText.value=body;
     status.textContent=messages.draft;
     document.querySelector('#draft-result').hidden=false;
-    location.href=`mailto:hello@leadra.co?subject=${encodeURIComponent('Leadra — '+values[1])}&body=${encodeURIComponent(body)}`;
+    location.href=`mailto:Office@leadra-sa.com?subject=${encodeURIComponent('Leadra — '+values[1])}&body=${encodeURIComponent(body)}`;
   });
   document.querySelector('.copy-draft').addEventListener('click',async()=>{
     try{await navigator.clipboard.writeText(draftText.value);status.textContent=messages.copied;}
