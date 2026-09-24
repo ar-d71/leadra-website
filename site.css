@@ -134,3 +134,38 @@ html[lang=ar] .footer-email{letter-spacing:0}
 
 .person-card-kicker{display:block}
 .person-card-role{display:block}
+
+/* Editorial people portraits, in Leadra's obsidian and champagne palette. */
+.people.section-light{background:#111713;color:#f0ece2;border-top:1px solid #c6ab7433;padding-block:90px 80px;overflow:hidden}
+.people-grid{display:block}
+.people-heading{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:0 60px;margin-bottom:56px}
+.people-heading .eyebrow{grid-column:1 / -1;color:#cdb98f}
+.people-heading h2{margin:20px 0 0;color:#f0ece2}
+.people-heading .lead{margin:0 0 8px;color:#b8bdaf;font-size:17px;max-width:330px;justify-self:end}
+.founder-cards{gap:32px;margin:0 0 65px}
+.person-card--profile{grid-column:1 / -1;position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,6vw,90px);min-height:0;overflow:visible;border:0;background:none;box-shadow:none;align-items:center;padding:0 0 45px;border-bottom:1px solid #c6ab7433}
+.person-card--profile:hover{transform:none;box-shadow:none}
+.profile-portrait{position:relative;margin:0;background:#111713;aspect-ratio:4/5;max-height:590px;overflow:hidden;isolation:isolate}
+.profile-portrait::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#111713 0%,#11171300 29%),linear-gradient(90deg,#11171333,transparent 25%,transparent 80%,#11171355);border:1px solid #c6ab7426}
+.profile-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:saturate(.35);transition:filter .8s,transform 1.2s var(--ease)}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.person-card--profile:hover .profile-portrait img{filter:saturate(.7);transform:scale(1.018)}}
+.person-card--profile .person-card-copy{padding:28px 0 40px;position:relative;align-self:center}
+.person-card--profile .person-card-copy::before{content:'';display:block;width:52px;height:1px;background:#cdb98f;margin-bottom:32px}
+.person-card--profile .person-card-name{font-size:clamp(38px,4.1vw,60px);line-height:1.1;max-width:520px;margin:0 0 20px;text-wrap:balance;color:#dfcfac}
+.person-card--profile .person-card-role{color:#d6d9ce;font-size:12px!important;letter-spacing:.13em;line-height:1.8!important}
+.person-card--profile .person-card-bio{font-size:16px!important;line-height:1.95!important;color:#b8bdaf;margin-top:30px!important;padding-top:26px;border-top:1px solid #c6ab7433}
+html[lang=ar] .person-card--profile .person-card-name{font-size:clamp(34px,3.5vw,50px);line-height:1.5}
+html[lang=ar] .person-card--profile .person-card-role{font-size:17px!important;letter-spacing:0}
+html[lang=ar] .person-card--profile .person-card-bio{font-size:18px!important;line-height:2!important}
+.people .person-card:not(.person-card--profile){background:#18201a;border-color:#c6ab7433;box-shadow:none;min-height:190px}
+.people .person-card:not(.person-card--profile) .person-card-name{color:#ddd4bf}
+.people .person-card:not(.person-card--profile) .person-card-role{color:#c2c7ba}
+.people .person-card:not(.person-card--profile) .person-card-bio{color:#aeb6a6;border-color:#c6ab7433}
+.people .advisory-copy{border-color:#c6ab7433;padding-top:35px}
+.people .advisory-copy h3{color:#dfcfac;font-weight:400;font-size:26px}
+.people .advisory-copy>p{color:#b8bdaf}
+.people .advisory-member{background:#18201a;border-color:#c6ab7433}
+.people .advisory-member-name{color:#e4dbc6}
+.people .advisory-member-role,.people .advisory-member-note{color:#b8bdaf}
+@media(max-width:900px){.person-card--profile{gap:35px;grid-template-columns:42% minmax(0,1fr)}.person-card--profile .person-card-bio{font-size:15px!important}html[lang=ar] .person-card--profile .person-card-bio{font-size:16px!important}.people-heading{gap:0 25px}}
+@media(max-width:600px){.people.section-light{padding-block:65px}.people-heading{display:block;margin-bottom:35px}.people-heading h2{margin:17px 0}.people-heading .lead{font-size:15px;max-width:none}.person-card--profile{grid-template-columns:minmax(0,1fr);gap:0;padding-bottom:35px}.profile-portrait{width:100%;aspect-ratio:4/4.7;max-height:540px}.profile-portrait img{object-position:center 30%}.person-card--profile .person-card-copy{padding:12px 3px 0}.person-card--profile .person-card-copy::before{margin-bottom:23px;width:36px}.person-card--profile .person-card-name{font-size:38px;margin-bottom:14px}html[lang=ar] .person-card--profile .person-card-name{font-size:32px}.person-card--profile .person-card-role{font-size:11px!important}html[lang=ar] .person-card--profile .person-card-role{font-size:15px!important}.person-card--profile .person-card-bio{margin-top:22px!important;padding-top:20px}.founder-cards{margin-bottom:35px}.people .advisory-copy h3{font-size:23px}}
