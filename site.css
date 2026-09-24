@@ -95,3 +95,42 @@ html[lang=ar] .eyebrow,html[lang=ar] .practice-question,html[lang=ar] label{lett
 .advisory-member{margin-top:22px!important;padding:24px 28px;border:1px solid #cfc5b5;background:#f2eee6}
 html[lang=ar] .person-card p,html[lang=ar] .advisory-member{font-size:17px;letter-spacing:0}
 @media(max-width:760px){.people-grid,.founder-cards{grid-template-columns:1fr}.founder-cards{gap:14px}.person-card{min-height:150px;padding:25px}.advisory-copy{grid-column:1}}
+
+/* Founder and advisory layouts preserve the exact source placeholder text. */
+.founder-cards{gap:22px;margin-block:12px 38px}
+.person-card{padding:0;min-height:260px;display:grid;grid-template-columns:32% minmax(0,1fr);align-items:stretch;overflow:hidden;background:#f7f3ea;border:1px solid #d6cbbb;box-shadow:0 18px 50px rgba(20,24,21,.045);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.person-card:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(20,24,21,.095)}
+.person-card-visual{position:relative;display:grid;place-items:center;min-height:100%;background:radial-gradient(circle at 70% 20%,#9d8b6733,transparent 45%),#161b18;border-inline-end:1px solid #b39b6b33;overflow:hidden}
+.person-card-visual::before{content:'';position:absolute;width:180px;height:180px;border:1px solid #c6ab7440;border-radius:50%;transform:translate(-10%,35%)}
+.person-card-visual::after{content:'';position:absolute;inset:14px;border:1px solid #c6ab7430}
+.person-card-visual img{width:54px;height:auto;max-height:78px;position:relative;z-index:1;opacity:.82;filter:brightness(0) saturate(100%) invert(87%) sepia(17%) saturate(331%) hue-rotate(351deg) brightness(92%)}
+.person-card-copy{padding:32px 30px;min-width:0;align-self:center}
+.person-card-kicker,.advisory-member-kicker{display:block;color:#8f7651;font-size:11px;letter-spacing:.12em;margin-bottom:14px}
+.person-card-name{font-family:var(--display);font-size:clamp(28px,2.7vw,40px);font-weight:400;line-height:1.25;margin:0 0 8px;color:#202820}
+.person-card-role{font-size:14px!important;line-height:1.65!important;color:#343b35;margin:0!important}
+.person-card-bio{border-top:1px solid #d9d0c2;margin-top:18px!important;padding-top:15px;color:#76786e;font-size:13px!important;line-height:1.8!important}
+.advisory-copy{padding-top:38px}
+.advisory-copy>p:not(.advisory-member){max-width:760px}
+.advisory-member{margin-top:26px!important;padding:0;display:flex;align-items:center;gap:25px;max-width:760px;min-height:116px;overflow:hidden}
+.advisory-member-mark{width:92px;align-self:stretch;flex:0 0 92px;background:#1b211c;display:grid;place-items:center}
+.advisory-member-mark::before{content:'✦';font:25px Georgia,serif;color:#d7c5a3}
+.advisory-member-copy{padding:18px 24px 18px 0}
+.advisory-member-kicker{margin-bottom:4px}
+.advisory-member-name{font-size:18px;color:#252c26;font-weight:500}
+.advisory-member-role{font-size:14px;color:#555c53}
+.advisory-member-note{display:block;font-size:12px;color:#777b71;margin-top:7px}
+html[dir=rtl] .advisory-member-copy{padding:18px 0 18px 24px}
+html[lang=ar] .person-card-kicker,html[lang=ar] .advisory-member-kicker{letter-spacing:0;font-size:13px}
+html[lang=ar] .person-card-name{font-family:var(--body);font-size:32px}
+html[lang=ar] .person-card-role{font-size:16px!important}
+html[lang=ar] .person-card-bio{font-size:14px!important}
+@media(max-width:1050px){.person-card{grid-template-columns:28% minmax(0,1fr)}.person-card-copy{padding:25px}.person-card-visual img{width:44px}}
+@media(max-width:760px){.founder-cards{gap:16px;margin-block:12px 22px}.person-card{min-height:215px;grid-template-columns:28% minmax(0,1fr)}.person-card-copy{padding:21px 18px}.person-card-name,html[lang=ar] .person-card-name{font-size:27px}.person-card-bio{margin-top:13px!important;padding-top:11px}.advisory-member{gap:16px}.advisory-member-mark{width:66px;flex-basis:66px}.advisory-member-copy{padding-block:15px}}
+
+.footer-email{color:var(--gold);font-size:12px;white-space:nowrap;border-bottom:1px solid #a9957555;padding-block:6px}
+.footer-email:hover{border-bottom-color:var(--gold)}
+html[lang=ar] .footer-email{letter-spacing:0}
+@media(max-width:760px){.footer-top{flex-wrap:wrap}.footer-email{order:3;width:100%;max-width:max-content}}
+
+.person-card-kicker{display:block}
+.person-card-role{display:block}
