@@ -194,3 +194,7 @@ html[lang=ar] .person-card--profile .person-card-bio{font-size:18px!important;li
  .advisory-cards .person-card-copy{min-height:70px;padding:12px 8px}
  .advisory-cards .person-card-name,html[lang=ar] .advisory-cards .person-card-name{font-size:18px;line-height:1.5;overflow-wrap:normal}
 }
+
+/* Seamless portrait edges within advisory cards. */
+.advisory-cards .profile-portrait img{position:absolute;inset:0;width:100%;height:100%}
+.advisory-cards .profile-portrait::after{border:0;background:linear-gradient(0deg,#161d17 0px,#161d17 2px,transparent 30%)}
