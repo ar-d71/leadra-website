@@ -198,3 +198,7 @@ html[lang=ar] .person-card--profile .person-card-bio{font-size:18px!important;li
 /* Seamless portrait edges within advisory cards. */
 .advisory-cards .profile-portrait img{position:absolute;inset:0;width:100%;height:100%}
 .advisory-cards .profile-portrait::after{border:0;background:linear-gradient(0deg,#161d17 0px,#161d17 2px,transparent 30%)}
+
+/* Blend founder portraits cleanly into the section background. */
+.founder-cards .profile-portrait img{position:absolute;inset:0;width:100%;height:100%}
+.founder-cards .profile-portrait::after{border:0;background:linear-gradient(0deg,#111713 0px,#111713 2px,transparent 29%),linear-gradient(90deg,#11171333,transparent 25%,transparent 80%,#11171355)}
