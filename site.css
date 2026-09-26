@@ -181,3 +181,10 @@ html[lang=ar] .person-card--profile .person-card-bio{font-size:18px!important;li
 .advisor-placeholder{border:1px dashed #c6ab7440;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:25px;background:#151c16;color:#ada58f;font-size:12px}
 .advisor-placeholder img{width:40px;height:54px;opacity:.7}
 @media(max-width:600px){.advisory-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.advisory-cards .person-card-name,html[lang=ar] .advisory-cards .person-card-name{font-size:20px}.advisory-cards .person-card-copy{padding:14px 12px 18px}.advisor-placeholder{min-height:210px}}
+
+/* Centered advisory portraits share one medium card size. */
+.advisory-cards{max-width:960px;margin:36px auto 0;gap:28px;align-items:stretch}
+.advisory-cards .profile-portrait{aspect-ratio:4/5;max-height:none;width:100%}
+.advisory-cards .person-card-copy{text-align:center;padding:22px 14px;min-height:98px;display:grid;place-items:center}
+.advisory-cards .person-card-name,html[lang=ar] .advisory-cards .person-card-name{font-size:24px}
+@media(max-width:600px){.advisory-cards{grid-template-columns:minmax(0,300px);justify-content:center;gap:25px}.advisory-cards .person-card-copy{min-height:82px}.advisory-cards .person-card-name,html[lang=ar] .advisory-cards .person-card-name{font-size:23px}}
