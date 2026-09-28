@@ -1,0 +1,142 @@
+[
+  {
+    "id": "trend",
+    "name": "ترند",
+    "url": "https://one1.sa/wp-content/uploads/2023/11/trend.jpg",
+    "file": "work/company-logos/trend.jpg",
+    "w": 591,
+    "h": 591,
+    "box": [
+      34,
+      225,
+      526,
+      143
+    ]
+  },
+  {
+    "id": "touch",
+    "name": "تاتش",
+    "url": "https://one1.sa/wp-content/uploads/2023/11/1-01-02-1.jpg",
+    "file": "work/company-logos/touch.jpg",
+    "w": 591,
+    "h": 591,
+    "box": [
+      22,
+      223,
+      550,
+      124
+    ]
+  },
+  {
+    "id": "trend-hub",
+    "name": "ترند هب",
+    "url": "https://one1.sa/wp-content/uploads/2023/11/trend-hub.jpg",
+    "file": "work/company-logos/trend-hub.jpg",
+    "w": 2560,
+    "h": 2560,
+    "box": [
+      324,
+      1093,
+      1912,
+      372
+    ]
+  },
+  {
+    "id": "mics",
+    "name": "مايكس",
+    "url": "https://one1.sa/wp-content/uploads/2023/11/mics.jpg",
+    "file": "work/company-logos/mics.jpg",
+    "w": 591,
+    "h": 591,
+    "box": [
+      21,
+      208,
+      545,
+      189
+    ]
+  },
+  {
+    "id": "sabq",
+    "name": "سبق",
+    "url": "https://one1.sa/wp-content/uploads/2023/11/sabq.jpg",
+    "file": "work/company-logos/sabq.jpg",
+    "w": 1080,
+    "h": 1080,
+    "box": [
+      217,
+      339,
+      646,
+      402
+    ]
+  },
+  {
+    "id": "tasharok",
+    "name": "تشارك",
+    "url": "https://one1.sa/wp-content/uploads/2024/05/New-Project.png",
+    "file": "work/company-logos/tasharok.png",
+    "w": 181,
+    "h": 181,
+    "box": [
+      23,
+      70,
+      136,
+      42
+    ]
+  },
+  {
+    "id": "cipher",
+    "name": "سايفر",
+    "url": "https://one1.sa/wp-content/uploads/2024/05/Cipher-logo-2-1.png",
+    "file": "work/company-logos/cipher.png",
+    "w": 5556,
+    "h": 5556,
+    "box": [
+      515,
+      2322,
+      4526,
+      912
+    ]
+  },
+  {
+    "id": "abeel",
+    "name": "أبيل",
+    "url": "https://one1.sa/wp-content/uploads/2024/05/New-Project-1.png",
+    "file": "work/company-logos/abeel.png",
+    "w": 181,
+    "h": 181,
+    "box": [
+      51,
+      63,
+      80,
+      55
+    ]
+  },
+  {
+    "id": "cubex",
+    "name": "كيوبكس",
+    "url": "https://one1.sa/wp-content/uploads/2025/06/Cube-100.jpg",
+    "file": "work/company-logos/cubex.jpg",
+    "w": 1729,
+    "h": 893,
+    "box": [
+      448,
+      222,
+      862,
+      449
+    ]
+  },
+  {
+    "id": "hamah",
+    "name": "هامة",
+    "url": "https://one1.sa/wp-content/uploads/2025/08/image-1-scaled.jpg",
+    "file": "work/company-logos/hamah.jpg",
+    "w": 2560,
+    "h": 2560,
+    "box": [
+      362,
+      769,
+      1969,
+      752
+    ]
+  }
+]
