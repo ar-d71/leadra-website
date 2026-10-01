@@ -1,0 +1,8 @@
+/* Local approved button direction: seal + centered signature return control. */
+.button{border-radius:14px}
+.brand-button-seal{display:inline-flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:32px;border:1px solid currentColor;border-color:color-mix(in srgb,currentColor 25%,transparent);border-radius:50%}
+.brand-button-seal svg{display:block;width:16px;height:23px;fill:currentColor}
+.back-top{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:0;width:54px;height:58px;min-width:54px;padding:8px 10px;border-radius:17px 6px 17px 6px;color:var(--gold);overflow:hidden}
+.back-top .brand-up-arrow{display:block;width:22px;height:24px;flex:none}
+.back-top .brand-up-base{display:block;width:24px;height:15px;fill:currentColor;flex:none;margin:1px 0 0;transform:none}
+.button:focus-visible,.back-top:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
